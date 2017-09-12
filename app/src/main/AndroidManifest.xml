@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.github.techisfun.onelinecalendar">
+    package="com.github.techisfun.onelinecalendar.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".DefaultApplication"
+        android:name="com.github.techisfun.onelinecalendar.OnelinecalendarApplication"
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".OnelinecalendarActivity"
+            android:name="com.github.techisfun.onelinecalendar.OnelinecalendarActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>

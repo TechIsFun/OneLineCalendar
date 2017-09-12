@@ -4,7 +4,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        applicationId "com.github.techisfun.onelinecalendar"
+        applicationId "com.github.techisfun.onelinecalendar.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.gitVersionCode
@@ -47,14 +47,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile project(':library')
+
     androidTestCompile(rootProject.ext.appTest.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
     compile rootProject.ext.appLibraries.supportAppCompat
-    compile rootProject.ext.appLibraries.constraintLayout
-    compile rootProject.ext.appLibraries.timber
-    compile rootProject.ext.appLibraries.butterknife
+    //compile rootProject.ext.appLibraries.constraintLayout
+    //compile rootProject.ext.appLibraries.timber
+    //compile rootProject.ext.appLibraries.butterknife
     annotationProcessor rootProject.ext.appLibraries.butterknifeProcessor
 
     testCompile rootProject.ext.appTest.junit

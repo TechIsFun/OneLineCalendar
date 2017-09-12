@@ -11,6 +11,6 @@ public class OnelinecalendarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(com.github.techisfun.onelinecalendar.app.R.layout.activity_main);
     }
 }

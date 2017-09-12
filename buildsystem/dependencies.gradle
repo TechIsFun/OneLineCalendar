@@ -1,5 +1,5 @@
 ext {
-    appCompatVersion = "26.0.1"
+    appCompatVersion = "25.2.0"
     constraintLayoutVersion = "1.0.2"
     timberVersion = "4.5.1"
     butterknifeVersion = "8.5.1"
@@ -14,7 +14,8 @@ ext {
             constraintLayout    : "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}",
             timber              : "com.jakewharton.timber:timber:${timberVersion}",
             butterknife         : "com.jakewharton:butterknife:${butterknifeVersion}",
-            butterknifeProcessor: "com.jakewharton:butterknife-compiler:${butterknifeProcessorVersion}"
+            butterknifeProcessor: "com.jakewharton:butterknife-compiler:${butterknifeProcessorVersion}",
+            recyclerView        : "com.android.support:recyclerview-v7:${appCompatVersion}"
     ]
 
     appTest = [

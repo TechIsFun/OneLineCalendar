@@ -11,8 +11,8 @@ import java.util.Locale;
 
 class SimpleDate {
     private static SimpleDateFormat sMonthFormat = new SimpleDateFormat("MMM", Locale.getDefault());
-    private static final int MONTH_TYPE = 1;
-    private static final int DATE_TYPE = 2;
+    static final int MONTH_TYPE = 1;
+    static final int DATE_TYPE = 2;
     private int mDay;
     private int mMonth;
     private int mYear;

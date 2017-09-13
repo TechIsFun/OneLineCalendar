@@ -11,11 +11,9 @@ script:
 - "./gradlew build"
 deploy:
   provider: releases
-  api_key: "$GITHUB_TOKEN"
+  api_key:
+    secure: JYeTz2kAXH3n1MH6glSvUQSQV9lUMRdmygtzFXfL5vqMNxvhBkKA6nclTqOHWUmWUDvLuJMZwoF6LP63tfS05GMrglidZmKQDgteh9kHE1R4OmWCkKL3QMVfeCPKzGUCK4mrPBuY7QId9/xw5P+1PamHHgiVbQdi+fCY5lwU46yags0N5OtuSAt8XK5KHmO/Hc3PR9m0hj+RHG2ZifkGz3L1uQheqygSzp01+pg5T0CMlM6X2Qicr1BUVC1vzpfKI3FvxeGh2vDQeeNSq2PtTNV9Vb03ex11O4toHu6CkmzB8kIk7l9hZFx4soVUGgT6hE00UsWTL+eZSPcISXGcE9jAuhdM78i9XMLGPPvRnXgKALQnihvhN5zbPuLbUkd/BoLnIB8cbDHwt6/65pw+CPfn87ay/V5dgd3YPXpm8/fE/CGvUrvQIZu0xs37RJbMTsejQSNE5EnF2gv0FnYSxLaPJ5mgcW2+zL+GVEGH54jZ/zaXAW7C46Hg/iB0M+e+nAfXdicLsoelDAUXw/tEJ1HS6mp0veNg0wbOj3VAHt2tezmFOey9+kEhpzAs0FMKqaJOVTY05vljIRae0LokTlGsqnnurbxsGY2Ekv8hDEoc8SY3s2Iq1udwMvRu+cRuwwwtsktSt8fCrKkxR6t1kYXERqmLD703+kew2X4qhM4=
   file: library/build/outputs/aar/library-release.aar
   skip_cleanup: true
-  on:
-    tags: true
-env:
-  global:
-    secure: PGfESBD4YXy2dN4kHozUT+Ewltv/fJaqBexN6nPgQvl4pj1vrvj/YQz/8H0EyZ/7VS2h3NxKhKo/qdpzFGUAur/cuXDYER5Sq0SB4OUdX5waYnfghFmgtLv7CJ21lSvEIYCBfXbmRxhP+gSVomclS6qzSSVhx0dMwwcvh9U+BJKm3/Cxzob9obvS++DEv5BAbifmGZKr2NClmk78F3XAI8Vp93Vq42EJWs0vZybsG9mHUcdIc30R1gdXcU+moIc6/kTs3Mf7qEn43nwnYMqr0WDpGcyN/SePjBPyfJ9+eLNbpN0nE96qvIhqzLFzCow1FiMAVXnHWCyTVDABOIrwCActqU5Rze7bpT1D40wRZ3+kyxMIyVF7vXheQKE2kLeq8H9qliol5fjwN0GD8MA1su/4btnaAvTWWLdQK09IzKrtjd1BvC//pDEkaHn1c35IgqCdbY5/qiIim66UX//5W90FegKEpof9qug/J4LzMsS3eNXC9xnC+7hGhnMRSg7pLeCBi4Z+KZCgFK69JxEGsI3DQ4EpeGe1qG87fE422WO6HoxujMMwQeO0jBIKHVIBZBkAmSYISUOTt/yZaoKuW0Zpv+D/bu9DbxTgH+6aoQ9XXtBpN1eAVYbM1YtuWBR3wsThT2JF/zUOK4IProtFJfjyB9IqrsbJ6sMVuRnGwEI=
+    on:
+      tags: true

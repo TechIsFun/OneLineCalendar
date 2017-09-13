@@ -1,1 +1,1 @@
-* Add application icon
+* Make styles customizable with attrs

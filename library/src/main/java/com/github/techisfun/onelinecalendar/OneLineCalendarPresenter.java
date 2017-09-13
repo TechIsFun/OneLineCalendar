@@ -16,25 +16,26 @@ class OneLineCalendarPresenter implements OneLineCalendarContract.Presenter {
 
     private static final int MAX_DAYS = 365;
     private static final int MAX_SIZE = MAX_DAYS + 12;
-
+    List<SimpleDate> mSimpleDateList = new ArrayList<>(MAX_SIZE);
     private OneLineCalendarContract.View mView;
 
-    List<SimpleDate> mSimpleDateList = new ArrayList<>(MAX_SIZE);
-
-    public OneLineCalendarPresenter() {
-        buildSimpleDateList();
+    OneLineCalendarPresenter(Calendar today) {
+        buildSimpleDateList(today);
     }
 
-    private void buildSimpleDateList() {
+    private void buildSimpleDateList(Calendar today) {
         Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today.getTime());
+
         for (int i = 0; i < MAX_DAYS ; i++) {
-            calendar.add(Calendar.DATE, 1);
             if (calendar.get(Calendar.DATE) == 1) {
                 mSimpleDateList.add(SimpleDate.monthFrom(calendar));
             } else if (i == 0) {
                 mSimpleDateList.add(SimpleDate.monthFrom(calendar));
             }
-            mSimpleDateList.add(SimpleDate.dateFrom(calendar));
+            mSimpleDateList.add(SimpleDate.dateFrom(calendar, today));
+
+            calendar.add(Calendar.DATE, 1);
         }
     }
 

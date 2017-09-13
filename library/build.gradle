@@ -29,5 +29,6 @@ dependencies {
 
     compile rootProject.ext.appLibraries.recyclerView
 
-    testCompile 'junit:junit:4.12'
+    testCompile rootProject.ext.testLibraries.junit
+    testCompile rootProject.ext.testLibraries.robolectric
 }

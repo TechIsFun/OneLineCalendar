@@ -8,6 +8,7 @@ ext {
     junitVersion = "4.12"
     espressoVersion = "2.2.2"
     mockitoVersion = "2.8.47"
+    robolectricversion = "3.1.4"
 
     appLibraries = [
             supportAppCompat    : "com.android.support:appcompat-v7:${appCompatVersion}",
@@ -18,9 +19,10 @@ ext {
             recyclerView        : "com.android.support:recyclerview-v7:${appCompatVersion}"
     ]
 
-    appTest = [
-            junit   : "junit:junit:${junitVersion}",
-            espresso: "com.android.support.test.espresso:espresso-core:${espressoVersion}",
-            mockito : "org.mockito:mockito-core:${mockitoVersion}"
+    testLibraries = [
+            junit      : "junit:junit:${junitVersion}",
+            espresso   : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+            mockito    : "org.mockito:mockito-core:${mockitoVersion}",
+            robolectric: "org.robolectric:robolectric:${robolectricversion}"
     ]
 }

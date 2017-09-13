@@ -13,7 +13,10 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import java.util.Calendar;
 import java.util.List;
+
+import static com.github.techisfun.onelinecalendar.OnLineCalendarUtils.capitalize;
 
 /**
  * @author Andrea Maglie
@@ -44,9 +47,10 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
         inflate(context, R.layout.onlinecalendar_layout, this);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        mStickyHeaderTextView = (TextView) findViewById(R.id.sticky_header).findViewById(R.id.item_text);
+        mStickyHeaderTextView = (TextView) findViewById(R.id.sticky_header).findViewById(R.id.item_month);
 
-        mPresenter = new OneLineCalendarPresenter();
+        Calendar today = Calendar.getInstance();
+        mPresenter = new OneLineCalendarPresenter(today);
 
         mLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -74,15 +78,20 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
     @Override
     public void populateWithItems(final List<SimpleDate> simpleDateList) {
         mStickyHeaderTextView.setText(simpleDateList.get(0).toString());
-        mRecyclerView.setAdapter(new RecyclerView.Adapter<DateViewHolder>() {
+        mRecyclerView.setAdapter(new RecyclerView.Adapter<AbstracViewHolder>() {
             @Override
-            public DateViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, parent, false);
-                return new DateViewHolder(view);
+            public AbstracViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                if (viewType == SimpleDate.MONTH_TYPE) {
+                    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_month_layout, parent, false);
+                    return new MonthViewHolder(view);
+                } else {
+                    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_day_layout, parent, false);
+                    return new DayViewHolder(view);
+                }
             }
 
             @Override
-            public void onBindViewHolder(DateViewHolder holder, int position) {
+            public void onBindViewHolder(AbstracViewHolder holder, int position) {
                 holder.bind(simpleDateList.get(position));
             }
 
@@ -98,17 +107,45 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
         });
     }
 
+    private static abstract class AbstracViewHolder extends RecyclerView.ViewHolder {
 
-    private static class DateViewHolder extends RecyclerView.ViewHolder {
+        public AbstracViewHolder(View itemView) {
+            super(itemView);
+        }
+
+        abstract void bind(SimpleDate simpleDate);
+    }
+
+    private static class MonthViewHolder extends AbstracViewHolder {
         private final TextView mItemText;
 
-        DateViewHolder(View itemView) {
+        MonthViewHolder(View itemView) {
             super(itemView);
-            mItemText = (TextView) itemView.findViewById(R.id.item_text);
+            mItemText = (TextView) itemView.findViewById(R.id.item_month);
         }
 
         void bind(SimpleDate simpleDate) {
             mItemText.setText(simpleDate.toString());
+        }
+    }
+
+    private static class DayViewHolder extends AbstracViewHolder {
+
+        private final TextView mDayNameTextView;
+        private final TextView mDayNumberTextView;
+        private final Context mContext;
+
+        DayViewHolder(View itemView) {
+            super(itemView);
+            mContext = itemView.getContext();
+            mDayNameTextView = (TextView) itemView.findViewById(R.id.item_day_name);
+            mDayNumberTextView = (TextView) itemView.findViewById(R.id.item_day_number);
+        }
+
+        void bind(SimpleDate simpleDate) {
+            CharSequence dayNameFormatted = simpleDate.getDayNameFormatted(mContext);
+            mDayNameTextView.setText(capitalize(dayNameFormatted.toString()));
+            mDayNumberTextView.setText(simpleDate.getDayNumberFormatted());
         }
     }
 

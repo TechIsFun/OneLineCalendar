@@ -17,11 +17,10 @@ class SimpleDate {
     static final int MONTH_TYPE = 1;
     static final int DATE_TYPE = 2;
     private static SimpleDateFormat sMonthFormat = new SimpleDateFormat("MMM", Locale.getDefault());
-    private static SimpleDateFormat sDayNameFormat = new SimpleDateFormat("EEE", Locale.getDefault());
-    int mDay;
-    int mMonth;
-    int mYear;
-    boolean mIsToday;
+    private int mDay;
+    private int mMonth;
+    private int mYear;
+    private boolean mIsToday;
     private int mType;
     private Date mDate;
 
@@ -47,9 +46,9 @@ class SimpleDate {
     }
 
     private static boolean equals(@NonNull Calendar c1, @NonNull Calendar c2) {
-        return c1.get(Calendar.YEAR) == c2.get(Calendar.YEAR) &&
-                c1.get(Calendar.MONTH) == c2.get(Calendar.MONTH) &&
-                c1.get(Calendar.DATE) == c2.get(Calendar.DATE);
+        return c1.get(Calendar.YEAR) == c2.get(Calendar.YEAR)
+                && c1.get(Calendar.MONTH) == c2.get(Calendar.MONTH)
+                && c1.get(Calendar.DATE) == c2.get(Calendar.DATE);
     }
 
     int getType() {
@@ -81,4 +80,19 @@ class SimpleDate {
         return String.valueOf(mDay);
     }
 
+    Date getDate() {
+        return mDate;
+    }
+
+    public int getDay() {
+        return mDay;
+    }
+
+    public int getMonth() {
+        return mMonth;
+    }
+
+    public int getYear() {
+        return mYear;
+    }
 }

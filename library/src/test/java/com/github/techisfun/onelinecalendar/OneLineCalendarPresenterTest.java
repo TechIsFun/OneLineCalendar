@@ -28,18 +28,18 @@ public class OneLineCalendarPresenterTest {
 
     @Test
     public void testDateList_firstItemIsMonth() {
-        SimpleDate date = mPresenter.mSimpleDateList.get(0);
-        assertEquals(0, date.mDay);
-        assertEquals(SEPTEMBER, date.mMonth);
-        assertEquals(2017, date.mYear);
+        SimpleDate date = mPresenter.getSimpleDateList().get(0);
+        assertEquals(0, date.getDay());
+        assertEquals(SEPTEMBER, date.getMonth());
+        assertEquals(2017, date.getYear());
     }
 
     @Test
     public void testDateList_secondItemIsToday() {
-        SimpleDate date = mPresenter.mSimpleDateList.get(1);
-        assertEquals(12, date.mDay);
-        assertEquals(SEPTEMBER, date.mMonth);
-        assertEquals(2017, date.mYear);
+        SimpleDate date = mPresenter.getSimpleDateList().get(1);
+        assertEquals(12, date.getDay());
+        assertEquals(SEPTEMBER, date.getMonth());
+        assertEquals(2017, date.getYear());
     }
 
 }

@@ -16,7 +16,7 @@ class OneLineCalendarPresenter implements OneLineCalendarContract.Presenter {
 
     private static final int MAX_DAYS = 365;
     private static final int MAX_SIZE = MAX_DAYS + 12;
-    List<SimpleDate> mSimpleDateList = new ArrayList<>(MAX_SIZE);
+    private List<SimpleDate> mSimpleDateList = new ArrayList<>(MAX_SIZE);
     private OneLineCalendarContract.View mView;
 
     OneLineCalendarPresenter(Calendar today) {
@@ -27,7 +27,7 @@ class OneLineCalendarPresenter implements OneLineCalendarContract.Presenter {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(today.getTime());
 
-        for (int i = 0; i < MAX_DAYS ; i++) {
+        for (int i = 0; i < MAX_DAYS; i++) {
             if (calendar.get(Calendar.DATE) == 1) {
                 mSimpleDateList.add(SimpleDate.monthFrom(calendar));
             } else if (i == 0) {
@@ -55,11 +55,17 @@ class OneLineCalendarPresenter implements OneLineCalendarContract.Presenter {
     }
 
     @Override
-    public void onScrolled(RecyclerView recyclerView, LinearLayoutManager layoutManager, TextView stickyHeaderTextView) {
+    public void onScrolled(RecyclerView recyclerView,
+                           LinearLayoutManager layoutManager,
+                           TextView stickyHeaderTextView) {
         int firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition();
         SimpleDate simpleDate = mSimpleDateList.get(firstVisibleItemPosition);
         if (simpleDate.getType() == SimpleDate.MONTH_TYPE) {
             stickyHeaderTextView.setText(simpleDate.toString());
         }
+    }
+
+    public List<SimpleDate> getSimpleDateList() {
+        return mSimpleDateList;
     }
 }

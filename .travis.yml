@@ -15,5 +15,5 @@ deploy:
     secure: JYeTz2kAXH3n1MH6glSvUQSQV9lUMRdmygtzFXfL5vqMNxvhBkKA6nclTqOHWUmWUDvLuJMZwoF6LP63tfS05GMrglidZmKQDgteh9kHE1R4OmWCkKL3QMVfeCPKzGUCK4mrPBuY7QId9/xw5P+1PamHHgiVbQdi+fCY5lwU46yags0N5OtuSAt8XK5KHmO/Hc3PR9m0hj+RHG2ZifkGz3L1uQheqygSzp01+pg5T0CMlM6X2Qicr1BUVC1vzpfKI3FvxeGh2vDQeeNSq2PtTNV9Vb03ex11O4toHu6CkmzB8kIk7l9hZFx4soVUGgT6hE00UsWTL+eZSPcISXGcE9jAuhdM78i9XMLGPPvRnXgKALQnihvhN5zbPuLbUkd/BoLnIB8cbDHwt6/65pw+CPfn87ay/V5dgd3YPXpm8/fE/CGvUrvQIZu0xs37RJbMTsejQSNE5EnF2gv0FnYSxLaPJ5mgcW2+zL+GVEGH54jZ/zaXAW7C46Hg/iB0M+e+nAfXdicLsoelDAUXw/tEJ1HS6mp0veNg0wbOj3VAHt2tezmFOey9+kEhpzAs0FMKqaJOVTY05vljIRae0LokTlGsqnnurbxsGY2Ekv8hDEoc8SY3s2Iq1udwMvRu+cRuwwwtsktSt8fCrKkxR6t1kYXERqmLD703+kew2X4qhM4=
   file: library/build/outputs/aar/library-release.aar
   skip_cleanup: true
-    on:
-      tags: true
+  on:
+    tags: true

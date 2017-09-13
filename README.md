@@ -11,7 +11,7 @@ A calendar widget for Android displayed on one line
 
 ```
 dependencies {
-  compile 'com.github.techisfun:onelinecalendar:0.2'
+  compile 'com.github.techisfun:onelinecalendar:0.4'
 }
 ```
 

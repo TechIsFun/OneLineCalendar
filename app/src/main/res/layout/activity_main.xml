@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.github.techisfun.onelinecalendar.OnelinecalendarActivity">
+              android:orientation="vertical"
+             tools:context="com.github.techisfun.onelinecalendar.OnelinecalendarActivity"
+             android:background="#dedede"
+             android:paddingTop="40dp">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#232323" />
 
     <com.github.techisfun.onelinecalendar.OneLineCalendarView
         android:id="@+id/calendar_view"
         android:layout_width="match_parent"
-        android:layout_height="70dp"/>
+        android:layout_height="70dp" />
 
-</FrameLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#232323" />
+
+</LinearLayout>

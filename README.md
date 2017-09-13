@@ -1,5 +1,7 @@
 # OneLineCalendar
 
+[![Build Status](https://travis-ci.org/TechIsFun/OneLineCalendar.svg)](https://travis-ci.org/TechIsFun/OneLineCalendar)
+
 A calendar widget for Android displayed on one line
 
 ![Screencap](img/onelinecalendar.gif)

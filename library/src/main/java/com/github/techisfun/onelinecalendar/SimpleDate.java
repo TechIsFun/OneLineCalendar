@@ -84,15 +84,22 @@ class SimpleDate {
         return mDate;
     }
 
-    public int getDay() {
+    int getDay() {
         return mDay;
     }
 
-    public int getMonth() {
+    int getMonth() {
         return mMonth;
     }
 
-    public int getYear() {
+    int getYear() {
         return mYear;
+    }
+
+    String getPreviousMonthFormatted() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(mDate);
+        calendar.add(Calendar.MONTH, -1);
+        return sMonthFormat.format(calendar.getTime());
     }
 }

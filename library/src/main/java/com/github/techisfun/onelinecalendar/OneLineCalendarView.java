@@ -55,13 +55,7 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
 
         mLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                mPresenter.onScrolled(recyclerView, mLayoutManager, mStickyHeaderTextView);
-            }
-        });
+        mRecyclerView.addOnScrollListener(mPresenter.buildOnScrollListener());
     }
 
     @Override
@@ -74,6 +68,11 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         mPresenter.dropView();
+    }
+
+    @Override
+    public void setStickyHeaderText(String string) {
+        mStickyHeaderTextView.setText(string);
     }
 
     @Override

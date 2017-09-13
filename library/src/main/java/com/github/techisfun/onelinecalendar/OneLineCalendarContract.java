@@ -1,8 +1,6 @@
 package com.github.techisfun.onelinecalendar;
 
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -14,6 +12,8 @@ public class OneLineCalendarContract {
 
     interface View {
         void populateWithItems(List<SimpleDate> simpleDateList);
+
+        void setStickyHeaderText(String string);
     }
 
     interface Presenter {
@@ -22,6 +22,6 @@ public class OneLineCalendarContract {
 
         void takeView(OneLineCalendarContract.View oneLineCalendar);
 
-        void onScrolled(RecyclerView recyclerView, LinearLayoutManager layoutManager, TextView stickyHeaderTextView);
+        RecyclerView.OnScrollListener buildOnScrollListener();
     }
 }

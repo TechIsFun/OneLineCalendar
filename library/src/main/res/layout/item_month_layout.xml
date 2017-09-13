@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/item_month_width"
                 android:layout_height="match_parent"
                 android:background="#7baecb"
                 android:orientation="vertical"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
     >
 
     <TextView

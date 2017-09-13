@@ -2,7 +2,6 @@ package com.github.techisfun.onelinecalendar;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -54,18 +53,45 @@ class OneLineCalendarPresenter implements OneLineCalendarContract.Presenter {
         mView.populateWithItems(mSimpleDateList);
     }
 
-    @Override
-    public void onScrolled(RecyclerView recyclerView,
-                           LinearLayoutManager layoutManager,
-                           TextView stickyHeaderTextView) {
-        int firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition();
-        SimpleDate simpleDate = mSimpleDateList.get(firstVisibleItemPosition);
-        if (simpleDate.getType() == SimpleDate.MONTH_TYPE) {
-            stickyHeaderTextView.setText(simpleDate.toString());
-        }
+    List<SimpleDate> getSimpleDateList() {
+        return mSimpleDateList;
     }
 
-    public List<SimpleDate> getSimpleDateList() {
-        return mSimpleDateList;
+    @Override
+    public RecyclerView.OnScrollListener buildOnScrollListener() {
+        return new RecyclerView.OnScrollListener() {
+
+            LinearLayoutManager layoutManager = null;
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                if (layoutManager == null) {
+                    layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                }
+
+                int firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition();
+                if (firstVisibleItemPosition == 0) {
+                    return;
+                }
+
+                String text = null;
+                boolean isRightScrolling = (dx >= 0);
+                SimpleDate simpleDate = mSimpleDateList.get(firstVisibleItemPosition);
+
+                if (simpleDate.getType() == SimpleDate.MONTH_TYPE) {
+                    if (isRightScrolling) {
+                        text = simpleDate.toString();
+                    } else {
+                        text = simpleDate.getPreviousMonthFormatted();
+                    }
+                }
+
+                if (mView != null && text != null) {
+                    mView.setStickyHeaderText(text);
+                }
+            }
+        };
     }
 }

@@ -14,7 +14,7 @@
     <include
         android:id="@+id/sticky_header"
         layout="@layout/item_month_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/item_month_width"
         android:layout_height="match_parent"
         />
 

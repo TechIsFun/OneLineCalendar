@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/TechIsFun/OneLineCalendar.svg)](https://travis-ci.org/TechIsFun/OneLineCalendar)
+[![](https://jitpack.io/v/techisfun/OneLineCalendar.svg)](https://jitpack.io/#techisfun/OneLineCalendar)
 
 # OneLineCalendar
 

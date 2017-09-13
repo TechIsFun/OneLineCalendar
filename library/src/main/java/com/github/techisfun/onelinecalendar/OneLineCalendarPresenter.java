@@ -61,17 +61,17 @@ class OneLineCalendarPresenter implements OneLineCalendarContract.Presenter {
     public RecyclerView.OnScrollListener buildOnScrollListener() {
         return new RecyclerView.OnScrollListener() {
 
-            LinearLayoutManager layoutManager = null;
+            private LinearLayoutManager mLayoutManager = null;
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
-                if (layoutManager == null) {
-                    layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                if (mLayoutManager == null) {
+                    mLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
                 }
 
-                int firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition();
+                int firstVisibleItemPosition = mLayoutManager.findFirstVisibleItemPosition();
                 if (firstVisibleItemPosition == 0) {
                     return;
                 }

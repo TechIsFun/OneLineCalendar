@@ -7,8 +7,7 @@ import java.util.List;
 /**
  * @author Andrea Maglie
  */
-
-public class OneLineCalendarContract {
+class OneLineCalendarContract {
 
     interface View {
         void populateWithItems(List<SimpleDate> simpleDateList);

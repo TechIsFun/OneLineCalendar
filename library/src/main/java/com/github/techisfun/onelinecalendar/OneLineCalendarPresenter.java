@@ -10,7 +10,6 @@ import java.util.List;
 /**
  * @author Andrea Maglie
  */
-
 class OneLineCalendarPresenter implements OneLineCalendarContract.Presenter {
 
     private static final int MAX_DAYS = 365;

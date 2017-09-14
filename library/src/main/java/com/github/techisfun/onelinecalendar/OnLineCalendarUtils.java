@@ -5,6 +5,9 @@ import android.support.annotation.Nullable;
 
 import java.util.Locale;
 
+/**
+ * @author Andrea Maglie
+ */
 abstract class OnLineCalendarUtils {
 
     @NonNull

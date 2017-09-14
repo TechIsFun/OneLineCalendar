@@ -21,14 +21,22 @@ public class OnelinecalendarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         OneLineCalendarView calendarView = (OneLineCalendarView) findViewById(R.id.calendar_view);
-        calendarView.setOnDateClickListener(new OnDateClickListener() {
+        calendarView.setOnDateClickListener(new DateSelectionListener() {
             @Override
-            public boolean onDateClicked(@NonNull Date date) {
+            public boolean onDateSelected(@NonNull Date date) {
                 Toast.makeText(OnelinecalendarActivity.this,
                         SimpleDateFormat.getDateInstance().format(date),
                         Toast.LENGTH_SHORT)
                         .show();
                 return true;
+            }
+
+            @Override
+            public void onDateUnselected() {
+                Toast.makeText(OnelinecalendarActivity.this,
+                        "Date unselected",
+                        Toast.LENGTH_SHORT)
+                        .show();
             }
         });
     }

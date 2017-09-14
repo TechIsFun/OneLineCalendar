@@ -12,7 +12,6 @@ import java.util.Locale;
 /**
  * @author Andrea Maglie
  */
-
 class SimpleDate {
     static final int MONTH_TYPE = 1;
     static final int DATE_TYPE = 2;

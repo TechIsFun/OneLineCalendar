@@ -21,19 +21,42 @@ dependencies {
 
 ```xml
 <com.github.techisfun.onelinecalendar.OneLineCalendarView
-    android:layout_width="match_parent"
-    android:layout_height="70dp" />
+        android:theme="@style/CalendarTheme"
+        android:id="@+id/calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        />
 ```
 
-- Then set the listener:
+- Create a theme
+```xml
+<style name="CalendarTheme" parent="Theme.AppCompat.Light">
+    <item name="itemDayBackground">@drawable/selectable_background</item>
+    <item name="itemDayNameTextColor">@color/day_name_text_color</item>
+    <item name="itemDayNumberTextColor">@color/day_number_text_color</item>
+    <item name="itemMonthBackground">@color/selected_bg</item>
+    <item name="itemMonthTextColor">@android:color/white</item>
+</style>
+```
+
+- Then set the listener for date selected/unselected:
 
 ```java
 OneLineCalendarView calendarView = (OneLineCalendarView) findViewById(R.id.calendar_view);
-calendarView.setOnDateClickListener(new OnDateClickListener() {
+calendarView.setOnDateClickListener(new DateSelectionListener() {
     @Override
-    public void onDateClicked(@NonNull Date date) {
+    public boolean onDateSelected(@NonNull Date date) {
         Toast.makeText(OnelinecalendarActivity.this,
                 SimpleDateFormat.getDateInstance().format(date),
+                Toast.LENGTH_SHORT)
+                .show();
+        return true;
+    }
+
+    @Override
+    public void onDateUnselected() {
+        Toast.makeText(OnelinecalendarActivity.this,
+                "Date unselected",
                 Toast.LENGTH_SHORT)
                 .show();
     }

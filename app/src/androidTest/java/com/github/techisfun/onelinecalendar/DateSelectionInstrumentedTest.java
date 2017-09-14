@@ -40,6 +40,11 @@ public class DateSelectionInstrumentedTest {
     public void testDateSelection() throws InterruptedException {
         OnelinecalendarActivity activity = mActivityRule.getActivity();
 
+        // take screenshot
+        Screenshot.snapActivity(activity)
+                .setName("no-selection")
+                .record();
+
         onView(withText(R.string.no_selection)).check(matches(isDisplayed()));
 
         Calendar today = Calendar.getInstance();
@@ -48,7 +53,11 @@ public class DateSelectionInstrumentedTest {
         // click on Today to select
         onView(withText("Today")).perform(click());
         onView(withText(todayFormatted)).check(matches(isDisplayed()));
-        Screenshot.snapActivity(activity).record();
+
+        // take screenshot
+        Screenshot.snapActivity(activity)
+                .setName("today-selected")
+                .record();
 
         // click again on Today to unselect
         onView(withText("Today")).perform(click());

@@ -23,6 +23,12 @@ before_script:
 script:
   - ./gradlew build executeScreenshotTests -Precord -Dorg.gradle.parallel=false -Dorg.gradle.jvmargs="-Xmx1536M" -Dorg.gradle.daemon=false
 
+after_success:
+  - git config --global user.email "travis@travis-ci.org"
+  - git config --global user.name "Travis CI"
+  - git commit --message "updated screenshots" app/screenshots
+  - git push origin master
+
 deploy:
   provider: releases
   api_key:

@@ -67,6 +67,6 @@ dependencies {
 }
 
 shot {
-    appId = 'com.github.techisfun.onelinecalendar.app'
+    appId = 'com.github.techisfun.onelinecalendar.app.debug'
 }
 

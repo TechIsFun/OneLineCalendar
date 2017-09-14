@@ -22,12 +22,12 @@ import static com.github.techisfun.onelinecalendar.OnLineCalendarUtils.capitaliz
  * @author Andrea Maglie
  */
 public class OneLineCalendarView extends FrameLayout implements OneLineCalendarContract.View {
-    protected RecyclerView.Adapter<AbstracViewHolder> adapter;
+    protected RecyclerView.Adapter<AbstracViewHolder> mAdapter;
     private RecyclerView mRecyclerView;
     private TextView mStickyHeaderTextView;
     private OneLineCalendarContract.Presenter mPresenter;
     private DateSelectionListener mDateSelectionListener;
-    private int selectedPos = -1;
+    private int mSelectedPos = -1;
 
     public OneLineCalendarView(@NonNull Context context) {
         super(context);
@@ -78,7 +78,7 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
     @Override
     public void populateWithItems(final List<SimpleDate> simpleDateList) {
         mStickyHeaderTextView.setText(simpleDateList.get(0).toString());
-        adapter = new RecyclerView.Adapter<AbstracViewHolder>() {
+        mAdapter = new RecyclerView.Adapter<AbstracViewHolder>() {
             @Override
             public AbstracViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 LayoutInflater inflater = LayoutInflater.from(parent.getContext());
@@ -94,7 +94,7 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
             @Override
             public void onBindViewHolder(AbstracViewHolder holder, int position) {
                 holder.bind(simpleDateList.get(position));
-                holder.setSelected(selectedPos == position);
+                holder.setSelected(mSelectedPos == position);
             }
 
             @Override
@@ -107,7 +107,7 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
                 return simpleDateList.get(position).getType();
             }
         };
-        mRecyclerView.setAdapter(adapter);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     public void setOnDateClickListener(DateSelectionListener mDateSelectionListener) {
@@ -192,14 +192,14 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
 
         private void clearSelection() {
             setSelected(false);
-            selectedPos = -1;
-            adapter.notifyItemChanged(getLayoutPosition());
+            mSelectedPos = -1;
+            mAdapter.notifyItemChanged(getLayoutPosition());
         }
 
         private void updateSelection() {
             setSelected(true);
-            selectedPos = getLayoutPosition();
-            adapter.notifyDataSetChanged();
+            mSelectedPos = getLayoutPosition();
+            mAdapter.notifyDataSetChanged();
         }
     }
 

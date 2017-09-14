@@ -21,7 +21,7 @@ before_script:
   - adb shell input keyevent 82 &
 
 script:
-  - "./gradlew build cAT"
+  - ./gradlew build executeScreenshotTests -Precord -Dorg.gradle.parallel=false -Dorg.gradle.jvmargs="-Xmx1536M" -Dorg.gradle.daemon=false
 
 deploy:
   provider: releases

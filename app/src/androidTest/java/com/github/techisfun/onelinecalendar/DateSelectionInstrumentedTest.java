@@ -3,6 +3,7 @@ package com.github.techisfun.onelinecalendar;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.facebook.testing.screenshot.Screenshot;
 import com.github.techisfun.onelinecalendar.app.R;
 
 import org.junit.Rule;
@@ -37,6 +38,8 @@ public class DateSelectionInstrumentedTest {
 
     @Test
     public void testDateSelection() throws InterruptedException {
+        OnelinecalendarActivity activity = mActivityRule.getActivity();
+
         onView(withText(R.string.no_selection)).check(matches(isDisplayed()));
 
         Calendar today = Calendar.getInstance();
@@ -45,6 +48,7 @@ public class DateSelectionInstrumentedTest {
         // click on Today to select
         onView(withText("Today")).perform(click());
         onView(withText(todayFormatted)).check(matches(isDisplayed()));
+        Screenshot.snapActivity(activity).record();
 
         // click again on Today to unselect
         onView(withText("Today")).perform(click());

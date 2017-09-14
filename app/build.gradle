@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.facebook.testing.screenshot'
+apply plugin: 'shot'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -9,7 +11,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.gitVersionCode
         versionName rootProject.ext.gitVersionName
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.github.techisfun.onelinecalendar.CustomAndroidTestRunner"
 
         // set the name of the generated apk in the form
         // <projectName>-<versionName>.apk
@@ -63,3 +65,8 @@ dependencies {
     testCompile rootProject.ext.testLibraries.junit
     testCompile rootProject.ext.testLibraries.mockito
 }
+
+shot {
+    appId = 'com.github.techisfun.onelinecalendar.app'
+}
+

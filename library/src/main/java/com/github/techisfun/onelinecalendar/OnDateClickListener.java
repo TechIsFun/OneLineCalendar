@@ -4,8 +4,8 @@ import android.support.annotation.NonNull;
 
 import java.util.Date;
 
-public interface OnDateClickListener {
+interface OnDateClickListener {
 
-    void onDateClicked(@NonNull Date date);
+    boolean onDateClicked(@NonNull Date date);
 
 }

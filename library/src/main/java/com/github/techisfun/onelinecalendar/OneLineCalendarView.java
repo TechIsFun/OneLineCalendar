@@ -23,11 +23,13 @@ import static com.github.techisfun.onelinecalendar.OnLineCalendarUtils.capitaliz
  */
 
 public class OneLineCalendarView extends FrameLayout implements OneLineCalendarContract.View {
+    protected RecyclerView.Adapter<AbstracViewHolder> adapter;
     private RecyclerView mRecyclerView;
     private TextView mStickyHeaderTextView;
     private OneLineCalendarContract.Presenter mPresenter;
     private LinearLayoutManager mLayoutManager;
     private OnDateClickListener mOnDateClickListener;
+    private int selectedPos = -1;
 
     public OneLineCalendarView(@NonNull Context context) {
         super(context);
@@ -78,7 +80,7 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
     @Override
     public void populateWithItems(final List<SimpleDate> simpleDateList) {
         mStickyHeaderTextView.setText(simpleDateList.get(0).toString());
-        mRecyclerView.setAdapter(new RecyclerView.Adapter<AbstracViewHolder>() {
+        adapter = new RecyclerView.Adapter<AbstracViewHolder>() {
             @Override
             public AbstracViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 LayoutInflater inflater = LayoutInflater.from(parent.getContext());
@@ -94,6 +96,7 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
             @Override
             public void onBindViewHolder(AbstracViewHolder holder, int position) {
                 holder.bind(simpleDateList.get(position));
+                holder.setSelected(selectedPos == position);
             }
 
             @Override
@@ -105,7 +108,8 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
             public int getItemViewType(int position) {
                 return simpleDateList.get(position).getType();
             }
-        });
+        };
+        mRecyclerView.setAdapter(adapter);
     }
 
     public void setOnDateClickListener(OnDateClickListener mOnDateClickListener) {
@@ -119,6 +123,8 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
         }
 
         abstract void bind(SimpleDate simpleDate);
+
+        abstract void setSelected(boolean selected);
     }
 
     private static class MonthViewHolder extends AbstracViewHolder {
@@ -131,6 +137,11 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
 
         void bind(SimpleDate simpleDate) {
             mItemText.setText(simpleDate.toString());
+        }
+
+        @Override
+        void setSelected(boolean selected) {
+            // nothing
         }
     }
 
@@ -149,6 +160,13 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
             this.mItemView = itemView;
         }
 
+        @Override
+        void setSelected(boolean selected) {
+            mItemView.setSelected(selected);
+            mDayNameTextView.setSelected(selected);
+            mDayNumberTextView.setSelected(selected);
+        }
+
         void bind(final SimpleDate simpleDate) {
             CharSequence dayNameFormatted = simpleDate.getDayNameFormatted(mContext);
             mDayNameTextView.setText(capitalize(dayNameFormatted.toString()));
@@ -158,11 +176,21 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
                 mItemView.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        mOnDateClickListener.onDateClicked(simpleDate.getDate());
+                        if (mOnDateClickListener.onDateClicked(simpleDate.getDate())) {
+                            updateSelection();
+                        }
                     }
                 });
+            } else {
+                updateSelection();
             }
 
+        }
+
+        private void updateSelection() {
+            setSelected(true);
+            selectedPos = getLayoutPosition();
+            adapter.notifyDataSetChanged();
         }
     }
 

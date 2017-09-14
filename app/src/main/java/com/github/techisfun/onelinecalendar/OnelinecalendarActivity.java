@@ -23,11 +23,12 @@ public class OnelinecalendarActivity extends AppCompatActivity {
         OneLineCalendarView calendarView = (OneLineCalendarView) findViewById(R.id.calendar_view);
         calendarView.setOnDateClickListener(new OnDateClickListener() {
             @Override
-            public void onDateClicked(@NonNull Date date) {
+            public boolean onDateClicked(@NonNull Date date) {
                 Toast.makeText(OnelinecalendarActivity.this,
                         SimpleDateFormat.getDateInstance().format(date),
                         Toast.LENGTH_SHORT)
                         .show();
+                return true;
             }
         });
     }

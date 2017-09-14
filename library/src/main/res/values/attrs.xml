@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="itemDayBackground" format="reference"/>
+    <attr name="itemDayNumberTextColor" format="reference"/>
+    <attr name="itemDayNameTextColor" format="reference"/>
+
+    <attr name="itemMonthBackground" format="reference"/>
+    <attr name="itemMonthTextColor" format="reference"/>
+
+</resources>

@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="@dimen/item_month_width"
-                android:layout_height="match_parent"
-                android:background="#7baecb"
-                android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="@dimen/item_month_width"
+             android:layout_height="match_parent"
+             android:background="?attr/itemMonthBackground"
+             tools:background="#ff0000"
     >
 
     <TextView
         android:id="@+id/item_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center"
         android:rotation="-90"
         android:textAllCaps="true"
-        android:textColor="#fff"
+        android:textColor="?attr/itemMonthTextColor"
         tools:text="MAR"
+        tools:textColor="#fff"
         />
 
-</RelativeLayout>
+</FrameLayout>

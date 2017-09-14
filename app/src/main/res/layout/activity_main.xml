@@ -17,11 +17,22 @@
         android:id="@+id/calendar_view"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:theme="@style/CalendarTheme"/>
+        android:theme="@style/CalendarTheme"
+        />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#232323" />
+
+    <TextView
+        android:id="@+id/selected_date_tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:text="@string/no_selection"
+        android:textColor="#232323"
+        android:textSize="20sp"/>
 
 </LinearLayout>

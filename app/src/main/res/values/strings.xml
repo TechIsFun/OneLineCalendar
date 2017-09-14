@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OnelinecalendarActivity</string>
+    <string name="no_selection">No selection</string>
 </resources>

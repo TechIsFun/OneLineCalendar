@@ -31,8 +31,9 @@ public class OnelinecalendarActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onDateUnselected() {
+            public boolean onDateUnselected() {
                 selectedDateTw.setText(R.string.no_selection);
+                return true;
             }
         });
     }

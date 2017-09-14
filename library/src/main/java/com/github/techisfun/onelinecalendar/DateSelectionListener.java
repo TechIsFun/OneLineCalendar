@@ -11,5 +11,5 @@ public interface DateSelectionListener {
 
     boolean onDateSelected(@NonNull Date date);
 
-    void onDateUnselected();
+    boolean onDateUnselected();
 }

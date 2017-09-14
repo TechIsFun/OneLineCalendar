@@ -175,8 +175,9 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
                     @Override
                     public void onClick(View view) {
                         if (view.isSelected()) {
-                            clearSelection();
-                            mDateSelectionListener.onDateUnselected();
+                            if (mDateSelectionListener.onDateUnselected()) {
+                                clearSelection();
+                            }
                         } else {
                             if (mDateSelectionListener.onDateSelected(simpleDate.getDate())) {
                                 updateSelection();

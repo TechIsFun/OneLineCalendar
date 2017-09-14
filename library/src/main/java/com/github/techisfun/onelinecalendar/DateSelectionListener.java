@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * @author Andrea Maglie
  */
-interface DateSelectionListener {
+public interface DateSelectionListener {
 
     boolean onDateSelected(@NonNull Date date);
 

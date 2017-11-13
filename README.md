@@ -63,6 +63,10 @@ calendarView.setOnDateClickListener(new DateSelectionListener() {
 });
 ```
 
+## Apps using this library
+* [Musement](http://bit.ly/29OYH1w)
+
+
 License
 -------
 

@@ -4,7 +4,7 @@ apply plugin: 'shot'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+
     defaultConfig {
         applicationId "com.github.techisfun.onelinecalendar.app"
         minSdkVersion rootProject.ext.minSdkVersion

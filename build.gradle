@@ -4,22 +4,20 @@ apply from: "buildsystem/version.gradle"
 
 buildscript {
     repositories {
+        google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
-        classpath 'com.facebook.testing.screenshot:plugin:0.4.2'
-        classpath 'com.karumi:shot:0.2.0'
+        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.facebook.testing.screenshot:plugin:0.10.0'
+        classpath 'com.karumi:shot:3.1.0'
     }
 }
 
 allprojects {
     repositories {
+        google()
         jcenter()
-        // need this for the new android APIs
-        maven {
-            url "https://maven.google.com"
-        }
     }
 }
 

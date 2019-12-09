@@ -1,10 +1,10 @@
 package com.github.techisfun.onelinecalendar;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import com.github.techisfun.onelinecalendar.app.R;
 
 import java.text.SimpleDateFormat;
@@ -20,9 +20,9 @@ public class OnelinecalendarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final TextView selectedDateTw = (TextView) findViewById(R.id.selected_date_tw);
+        final TextView selectedDateTw = findViewById(R.id.selected_date_tw);
 
-        OneLineCalendarView calendarView = (OneLineCalendarView) findViewById(R.id.calendar_view);
+        OneLineCalendarView calendarView = findViewById(R.id.calendar_view);
         calendarView.setOnDateClickListener(new DateSelectionListener() {
             @Override
             public boolean onDateSelected(@NonNull Date date) {

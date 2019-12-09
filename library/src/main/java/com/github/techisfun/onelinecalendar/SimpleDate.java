@@ -1,9 +1,9 @@
 package com.github.techisfun.onelinecalendar;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.text.format.DateUtils;
 
+import androidx.annotation.NonNull;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;

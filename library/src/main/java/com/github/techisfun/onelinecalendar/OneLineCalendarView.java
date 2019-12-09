@@ -1,11 +1,8 @@
 package com.github.techisfun.onelinecalendar;
 
 import android.content.Context;
-import android.support.annotation.AttrRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.AttrRes;
+import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import java.util.Calendar;
 import java.util.List;
 
@@ -47,8 +47,8 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
     private void init(Context context) {
         inflate(context, R.layout.onlinecalendar_layout, this);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        mStickyHeaderTextView = (TextView) findViewById(R.id.sticky_header).findViewById(R.id.item_month);
+        mRecyclerView = findViewById(R.id.recycler_view);
+        mStickyHeaderTextView = findViewById(R.id.sticky_header).findViewById(R.id.item_month);
 
         Calendar today = Calendar.getInstance();
         mPresenter = new OneLineCalendarPresenter(today);
@@ -79,8 +79,9 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
     public void populateWithItems(final List<SimpleDate> simpleDateList) {
         mStickyHeaderTextView.setText(simpleDateList.get(0).toString());
         mAdapter = new RecyclerView.Adapter<AbstracViewHolder>() {
+            @NonNull
             @Override
-            public AbstracViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            public AbstracViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 LayoutInflater inflater = LayoutInflater.from(parent.getContext());
                 if (viewType == SimpleDate.MONTH_TYPE) {
                     View view = inflater.inflate(R.layout.item_month_layout, parent, false);
@@ -92,7 +93,7 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
             }
 
             @Override
-            public void onBindViewHolder(AbstracViewHolder holder, int position) {
+            public void onBindViewHolder(@NonNull AbstracViewHolder holder, int position) {
                 holder.bind(simpleDateList.get(position));
                 holder.setSelected(mSelectedPos == position);
             }
@@ -130,7 +131,7 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
 
         MonthViewHolder(View itemView) {
             super(itemView);
-            mItemText = (TextView) itemView.findViewById(R.id.item_month);
+            mItemText = itemView.findViewById(R.id.item_month);
         }
 
         void bind(SimpleDate simpleDate) {
@@ -153,8 +154,8 @@ public class OneLineCalendarView extends FrameLayout implements OneLineCalendarC
         DayViewHolder(View itemView) {
             super(itemView);
             mContext = itemView.getContext();
-            mDayNameTextView = (TextView) itemView.findViewById(R.id.item_day_name);
-            mDayNumberTextView = (TextView) itemView.findViewById(R.id.item_day_number);
+            mDayNameTextView = itemView.findViewById(R.id.item_day_name);
+            mDayNumberTextView = itemView.findViewById(R.id.item_day_number);
             this.mItemView = itemView;
         }
 

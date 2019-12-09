@@ -1,6 +1,6 @@
 package com.github.techisfun.onelinecalendar;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.util.Date;
 

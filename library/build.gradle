@@ -18,16 +18,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    implementation rootProject.ext.appLibraries.recyclerView
 
-    compile rootProject.ext.appLibraries.recyclerView
-
-    testCompile rootProject.ext.testLibraries.junit
-    testCompile rootProject.ext.testLibraries.robolectric
+    testImplementation rootProject.ext.testLibraries.junit
+    testImplementation rootProject.ext.testLibraries.robolectric
 }

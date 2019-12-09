@@ -3,5 +3,6 @@
 - Updated to target sdk 28 and min sdk 17
 - Updated to androidx.appcompat:appcompat:1.1.0
 - Updated to androidx.recyclerview:recyclerview:1.1.0
+- Updated test to Espresso 3.1.0 and Robolectric 4.3
 
 * v0.1 Project started! (Tue Sep 12 16:30:33 2017)

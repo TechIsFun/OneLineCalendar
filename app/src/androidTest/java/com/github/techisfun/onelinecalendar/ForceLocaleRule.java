@@ -2,7 +2,6 @@ package com.github.techisfun.onelinecalendar;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.support.test.InstrumentationRegistry;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
@@ -44,7 +43,7 @@ public class ForceLocaleRule implements TestRule {
 
 
     private void setLocale(Locale locale) {
-        Resources resources = InstrumentationRegistry.getTargetContext().getResources();
+        Resources resources = androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().getContext().getResources();
         Locale.setDefault(locale);
         Configuration config = resources.getConfiguration();
         config.locale = locale;

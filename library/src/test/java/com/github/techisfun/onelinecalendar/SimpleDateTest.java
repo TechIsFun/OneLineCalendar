@@ -17,7 +17,6 @@ import static java.util.Calendar.getInstance;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 21)
 public class SimpleDateTest {
 
     private Calendar today;

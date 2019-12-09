@@ -52,15 +52,16 @@ dependencies {
 
     implementation project(':library')
 
-    androidTestCompile(rootProject.ext.testLibraries.espresso, {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-
     implementation rootProject.ext.appLibraries.supportAppCompat
     annotationProcessor rootProject.ext.appLibraries.butterknifeProcessor
 
     testCompile rootProject.ext.testLibraries.junit
     testCompile rootProject.ext.testLibraries.mockito
+
+    androidTestImplementation rootProject.ext.testLibraries.espresso
+    androidTestImplementation rootProject.ext.testLibraries.espressoContrib
+    androidTestImplementation rootProject.ext.testLibraries.rules
+    androidTestImplementation rootProject.ext.testLibraries.junit
 }
 
 shot {

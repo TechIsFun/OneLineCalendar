@@ -68,3 +68,6 @@ shot {
     appId = 'com.github.techisfun.onelinecalendar.app.debug'
 }
 
+screenshots {
+    referenceDir = "${project.rootDir}/screenshots/"
+}

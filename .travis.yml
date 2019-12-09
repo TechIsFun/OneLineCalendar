@@ -1,9 +1,10 @@
 language: android
 android:
   components:
-  - build-tools-25.0.2
+  - build-tools-26.1.1
   - android-19
   - android-25
+  - android-28
   - extra-google-google_play_services
   - extra-google-m2repository
   - extra-android-m2repository

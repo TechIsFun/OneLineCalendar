@@ -37,7 +37,7 @@ task findbugs(type: FindBugs, dependsOn: "assemble", group: 'verification') {
     if (isJava) {
         classes = files("$projectDir.absolutePath/build/classes")
     } else {
-        classes = files("$projectDir.absolutePath/build/intermediates/classes")
+        classes = files("$projectDir.absolutePath/build/intermediates/javac")
     }
     source 'src'
     include '**/*.java'

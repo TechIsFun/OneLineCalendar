@@ -27,14 +27,15 @@ before_script:
   - adb shell input keyevent 82 &
 
 script:
-  - ./gradlew build executeScreenshotTests -Precord -Dorg.gradle.parallel=false -Dorg.gradle.jvmargs="-Xmx1536M" -Dorg.gradle.daemon=false
+  #- ./gradlew build executeScreenshotTests -Precord -Dorg.gradle.parallel=false -Dorg.gradle.jvmargs="-Xmx1536M" -Dorg.gradle.daemon=false
+  - ./gradlew build
 
-after_success:
-  - git config --global user.email "travis@travis-ci.org"
-  - git config --global user.name "Travis CI"
-  - git status
-  - git commit --message "updated screenshots" app/screenshots/*
-  - git push origin master
+#after_success:
+#  - git config --global user.email "travis@travis-ci.org"
+#  - git config --global user.name "Travis CI"
+#  - git status
+#  - git commit --message "updated screenshots" app/screenshots/*
+#  - git push origin master
 
 deploy:
   provider: releases

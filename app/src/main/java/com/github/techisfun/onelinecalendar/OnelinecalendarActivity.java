@@ -16,16 +16,16 @@ import java.util.Date;
 public class OnelinecalendarActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         final TextView selectedDateTw = findViewById(R.id.selected_date_tw);
 
-        OneLineCalendarView calendarView = findViewById(R.id.calendar_view);
+        final OneLineCalendarView calendarView = findViewById(R.id.calendar_view);
         calendarView.setOnDateClickListener(new DateSelectionListener() {
             @Override
-            public boolean onDateSelected(@NonNull Date date) {
+            public boolean onDateSelected(@NonNull final Date date) {
                 selectedDateTw.setText(SimpleDateFormat.getDateInstance().format(date));
                 return true;
             }

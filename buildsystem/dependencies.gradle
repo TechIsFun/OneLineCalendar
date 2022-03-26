@@ -3,7 +3,7 @@ ext {
     constraintLayoutVersion = "1.0.2"
     timberVersion = "4.5.1"
     butterknifeVersion = "8.5.1"
-    butterknifeProcessorVersion = "8.5.1"
+    butterknifeProcessorVersion = "8.8.1"
 
     junitVersion = "4.12"
     espressoVersion = "2.2.2"

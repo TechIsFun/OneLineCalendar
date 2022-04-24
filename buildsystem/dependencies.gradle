@@ -5,7 +5,7 @@ ext {
     butterknifeVersion = "8.5.1"
     butterknifeProcessorVersion = "8.5.1"
 
-    junitVersion = "4.12"
+    junitVersion = "4.13.2"
     espressoVersion = "2.2.2"
     mockitoVersion = "2.8.47"
     robolectricversion = "3.1.4"

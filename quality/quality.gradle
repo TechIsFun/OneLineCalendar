@@ -5,7 +5,7 @@ apply plugin: 'pmd'
 def isJava = plugins.hasPlugin('java')
 
 checkstyle {
-    toolVersion '7.4'
+    toolVersion '7.8.2'
 
     configFile file("${project.rootDir}/quality/checkstyle/checkstyle.xml")
     configProperties.checkstyleSuppressionFilterPath = file(
